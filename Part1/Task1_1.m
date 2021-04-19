@@ -48,12 +48,14 @@ title('The autocovariance function of the impulse signal');
 xlabel('Lags(sample)');
 ylabel('ACF');
 grid on;grid minor;
+set(gca,'fontsize',10);
 subplot(2,1,2)
 plot(lag_A, ACF_B,'LineWidth',2);
 title('The autocovariance function of the summed sine signal');
 xlabel('Lags(sample)');
 ylabel('ACF');
 grid on;grid minor;
+set(gca,'fontsize',10);
 %% Plot the PSD of impulse signal for equvalance simulation
 figure;
 subplot(2,1,1);
@@ -64,6 +66,7 @@ grid on;grid minor;
 legend('Definition 1', 'Definition 2');
 xlabel('Normalized frequency (\pi rad/sample)')
 ylabel('Magnitude (dB)');
+set(gca,'fontsize',10);
 title('The power density function for two definitions of impulse signal');
 %% Plot the PSD of sinusoidal signal for not equvalance simulation
 subplot(2,1,2);
@@ -74,6 +77,7 @@ grid on;
 legend('Definition 1', 'Definition 2');
 xlabel('Normalized frequency (\pi rad/sample)')
 ylabel('Magnitude (dB)');
+set(gca,'fontsize',10);
 title('The power density function for two definitions of sinusoid signal');
 
 

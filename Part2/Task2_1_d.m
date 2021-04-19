@@ -52,7 +52,7 @@ for iStep = 1:length(step)
     ylim([-0.2 1.2]);
     xlabel('Number of iterations (Samples)');
     ylabel('Average weight');
-    legend('a1\_Est','a1','a2\_Est','a2','Location','North','NumColumns',2*order);
+    legend('a1_{Est}','a1','a2_{Est}','a2','Location','North','NumColumns',2*order);
     grid on; grid minor;
     set(gca,'fontsize',12);
 end

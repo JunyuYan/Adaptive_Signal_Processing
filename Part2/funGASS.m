@@ -1,4 +1,4 @@
-function [weight_GASS, error_GASS, mu_GASS] = funGASS(inputSig,desireSig,step0,order,rho,leakage,algo,alpha)
+function [weight_GASS, error_GASS, mu_GASS] = funGASS(inputSig,desireSig,step0,order,delay,rho,leakage,algo,alpha)
 %% -------------------------------------------------------------------------
 % This function is used to implement the LMS algorithm
 % Input: inputSig- The previous samples used for the prediction of future
@@ -15,6 +15,10 @@ function [weight_GASS, error_GASS, mu_GASS] = funGASS(inputSig,desireSig,step0,o
 %         mu_GASS- Predicted step size by GASS
 %% -------------------------------------------------------------------------
     % Check the input
+    if nargin < 9
+        alpha = 0;
+    end
+    
     if ~isvector(inputSig)
         error('The input signal should be a vector');
     end
@@ -27,6 +31,9 @@ function [weight_GASS, error_GASS, mu_GASS] = funGASS(inputSig,desireSig,step0,o
     if ~isscalar(order)
         error('The order of AR process should be a scalar');
     end
+     if ~isscalar(delay)
+        error('The delay should be a scalar');
+    end
     if ~isscalar(rho)
         error('The learning rate for step size should be a scalar');
     end
@@ -34,11 +41,12 @@ function [weight_GASS, error_GASS, mu_GASS] = funGASS(inputSig,desireSig,step0,o
         error('The leakage should be a scalar');
     end
     if ~isstring(algo)
-        error('The algorithm type should be a scalar');
+        error('The algorithm type should be a string');
     end
     if ~isscalar(alpha)
         error('The learning coefficient for Ang & Farhang should be a scalar');
     end
+    
     
     %% Define parameters
     % The order and number of samples
@@ -57,12 +65,12 @@ function [weight_GASS, error_GASS, mu_GASS] = funGASS(inputSig,desireSig,step0,o
     
      % Obtain the processed signal x(n-m)
     for m = 1:order
-        xn_GASS(m,:) = [zeros(1,m-1),inputSig(1,1:(N-m))];
+        xn_GASS(m,:) = [zeros(1,m+delay-1),inputSig(1,1:(N-m-delay+1))];
     end
     
     for n = 1:N
         pred = weight_GASS(:,n).'*xn_GASS(:,n);
-        error_GASS(n) = pred - desireSig(n);
+        error_GASS(n) = desireSig(n)-pred;
         weight_GASS(:,n+1) = (1-mu_GASS(n)*leakage)*weight_GASS(:,n)+mu_GASS(n)*error_GASS(n)*xn_GASS(:,n);
         mu_GASS(n+1) = mu_GASS(n)+rho*error_GASS(n)*xn_GASS(:,n).'*phi(:,n);
         switch algo

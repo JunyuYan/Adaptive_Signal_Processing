@@ -71,7 +71,9 @@ title(sprintf('Balanced circularity diagram with |\\rho| = %.2f', Cir_bal));
 grid on; grid minor;
 xlabel('Real part');
 ylabel('Imaginary part');
-set(gca,'fontsize',10);
+set(gca,'fontsize',12);
+axis square;
+figure;
 % Unbalanced three phase with diferent amplitudes
 legendstr = cell(length(ampDiff),1);
 subplot(1,2,1);
@@ -83,11 +85,12 @@ for iAmp = 1:length(ampDiff)
     grid on; grid minor;
     xlabel('Real part');
     ylabel('Imaginary part');
-    set(gca,'fontsize',10);
+    set(gca,'fontsize',12);
 end
 legend(legendstr);
 xlim([-2,2]);
 ylim([-2,2]);
+axis square;
 % Unbalanced three phase with diferent phases
 legendstr = cell(length(phiDiff),1);
 subplot(1,2,2);
@@ -99,8 +102,9 @@ for iPhi = 1:length(phiDiff)
     grid on; grid minor;
     xlabel('Real part');
     ylabel('Imaginary part');
-    set(gca,'fontsize',10);
+    set(gca,'fontsize',12);
 end
 legend(legendstr);
 xlim([-2,2]);
 ylim([-2,2]);
+axis square;

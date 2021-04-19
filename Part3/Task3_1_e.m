@@ -127,9 +127,9 @@ ylim([0,100]);
 
 %% Unbalanced amplitude three phase power systems
 % Phase difference
-phiDiff = 0.1;
+phiDiff = [0.2,0.4];
 % Phase shift
-delta = zeros(3,1)+[0;-phiDiff*pi;phiDiff*pi];
+delta = zeros(3,1)+[0;phiDiff(1)*pi;phiDiff(2)*pi];
 % Unbalanced three phase
 unPhi_V = Amp.* cos(2*pi*fo/fs*t+delta+phase);
 % Clake voltage

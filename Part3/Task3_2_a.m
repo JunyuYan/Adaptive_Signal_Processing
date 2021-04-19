@@ -41,7 +41,7 @@ plot(angle(exp(1i*(2*pi*phase/fs))),'LineWidth',2);
 grid on;grid minor;
 title('Phase of FM signal');
 xlabel('Frequency (Hz)');
-ylabel('Phase (rad)');
+ylabel('Time (Sample)');
 set(gca,'fontsize',12);
 
 
@@ -69,20 +69,24 @@ Seg = 500;
 % Number of segments
 nSeg = 3;
 figure;
-for iSeg = 1:nSeg
-    Seg_Sig = FM_Sig((iSeg-1)*Seg+1:iSeg*Seg);
-    % Coefficients for segmented signal
-    a_coeff = aryule(Seg_Sig,1);
-    % Frequency response
-    [h_freq,w_freq] = freqz(1,a_coeff,nSample/nSeg,fs);
-    % Power spectrum for FM signal
-    psd_FM = abs(h_freq.^2);
-    subplot(1,nSeg,iSeg);
-    plot(w_freq,pow2db(psd_FM),'LineWidth',2);
-    grid on; grid minor;
-    title(sprintf('FM segment %d: Power spectrum AR(1)',iSeg));
-    xlabel('Time(Sample)');
-    ylabel('PSD (dB)');
-    set(gca,'fontsize',12);
-    xticks(0:100:800);
+for iOrder = 1:length(orderAR)
+    for iSeg = 1:nSeg
+        Seg_Sig = FM_Sig((iSeg-1)*Seg+1:iSeg*Seg);
+        % Coefficients for segmented signal
+        a_coeff = aryule(Seg_Sig,orderAR(iOrder));
+        % Frequency response
+        [h_freq,w_freq] = freqz(1,a_coeff,nSample/nSeg,fs);
+        % Power spectrum for FM signal
+        psd_FM = abs(h_freq.^2);
+        subplot(1,nSeg,iSeg);
+        plot(w_freq,pow2db(psd_FM),'LineWidth',2);
+        hold on;
+        grid on; grid minor;
+        title(sprintf('FM segment %d: Power spectrum',iSeg));
+        xlabel('Time(Sample)');
+        ylabel('PSD (dB)');
+        legend('AR(1)','AR(5)','AR(10)');
+        set(gca,'fontsize',12);
+        xticks(0:100:800);
+    end
 end

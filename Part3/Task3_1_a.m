@@ -72,6 +72,7 @@ subplot(2,1,2);
 plot(pow2db(av_errorCLMS),'LineWidth',2);
 hold on;
 plot(pow2db(av_errorACLMS),'LineWidth',2);
+title('Learning curves for CLMS and ACLMS');
 xlabel('Time (Sample)');
 ylabel('Squared error (dB)');
 grid on; grid minor;

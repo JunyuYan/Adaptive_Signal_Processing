@@ -43,6 +43,7 @@ end
 
 %% Plot the result
 figure;
+subplot(1,2,1);
 for iStep = 1:length(step)
     plot(pow2db(error(1,:,iStep).^2),'LineWidth',2);
     hold on;
@@ -53,8 +54,8 @@ title('The squared error by adaptive LMS: one realisation');
 set(gca,'fontsize',12);
 grid on; grid minor;
 legend('step = 0.05','step = 0.01');
-
-figure;
+set(gca,'fontsize',12);
+subplot(1,2,2);
 for iStep = 1:length(step)
     plot(pow2db(av_error(iStep,:)),'LineWidth',2);
     hold on;
@@ -62,6 +63,6 @@ end
 xlabel('Time (Sample)');
 ylabel('The squared prediction error (dB)');
 title('The learning curve of adaptive LMS');
-set(gca,'fontsize',12);
 grid on; grid minor;
 legend('step = 0.05','step = 0.01');
+set(gca,'FontSize',12);

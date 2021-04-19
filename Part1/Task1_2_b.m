@@ -5,7 +5,7 @@
 %--------------------------------------------------------------------------
 
 clc;clear;close all
-load('EEG_Data_Assignment1.mat');
+load('../Data/EEG_Data_Assignment1.mat');
 %% Initialization
 % The number of samples
 nSample = length(POz);
@@ -31,7 +31,7 @@ ylim([-150,-90]);
 title('The PSD of EEG series: standard periodogram');
 xlabel('Frequency (Hz)');
 ylabel('Magnitude (dB)');
-
+set(gca,'fontsize',12);
 %% Averaged periodogram
 subplot(2,1,2);
 for index = 1:length(winLength)
@@ -47,4 +47,5 @@ title('The PSD of EEG series: averaged periodogram');
 xlabel('Frequency (Hz)');
 ylabel('Magnitude (dB)');
 legend('Window=10s','Window=5s','Window=1s');
+set(gca,'fontsize',12);
 

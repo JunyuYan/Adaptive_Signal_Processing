@@ -81,7 +81,7 @@ function [weight_PM, error_PM, pred_PM] = funPerception(inputSig,desireSig,order
     for i = 1:N
         pred_PM(:,i) = scale*tanh(weight(:,i).'* xn_LMS(:,i));
         error_PM(:,i) = desireSig(:,i) - pred_PM(:,i);
-        weight(:,i+1) = (1-step*leakage)*weight(:,i) + step * error_PM(:,i)*xn_LMS(:,i);
+        weight(:,i+1) = (1-step*leakage)*weight(:,i) + (step * scale*(1-tanh(weight(:,i).'* xn_LMS(:,i))^2)*error_PM(:,i)).*xn_LMS(:,i);
     end
     
     weight_PM = weight(:,2:end);

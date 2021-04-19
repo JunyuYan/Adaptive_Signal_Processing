@@ -6,7 +6,7 @@
 %--------------------------------------------------------------------------
 
 clc;clear;close all
-load('PCAPCR.mat');
+load('../Data/PCAPCR.mat');
 
 %% Calculate regression matrix B 
 % OLS method
@@ -52,21 +52,23 @@ display(['The total error of testing data with PCR is ',num2str(ToterrorTest_PCR
 %% Plot the results
 figure;
 % Plot the error
-subplot(2,1,1);
+subplot(1,2,1);
 stem(errorTrain_OLS,'b-*');
 hold on;
 stem(errorTrain_PCR,'r--o');
 grid on;grid minor;
 xlabel('Subspace dimension index');
 ylabel('Square error');
+set(gca,'fontsize',10);
 title('Error between reproduced and original training output');
 legend('OLS','PCR');
-subplot(2,1,2);
+subplot(1,2,2);
 stem(errorTest_OLS,'b-*');
 hold on;
 stem(errorTest_PCR,'r--o');
 grid on; grid minor;
 xlabel('Subspace dimension index');
 ylabel('Square error');
+set(gca,'fontsize',10);
 title('Error between reproduced and orignal testing data');
 legend('OLS','PCR');

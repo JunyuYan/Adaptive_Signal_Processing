@@ -56,12 +56,12 @@ for iLeak= 1:length(leakage)
 end
 
 %% Zero padding K-point DFT-CLMS
+figure;
 % Number of k points
 K = 2048;
 % Frequency for time-frequency diagram
 freq = (0:K-1).*(fs/K);
-figure;
-inputSig = (1/nSample).*exp(1i*2*pi*(0:K-1).'*(1:nSample)/nSample);
+inputSig = (1/K).*exp(1i*pi*(1:nSample)'*(0:K-1)/K).';
 desireSig = FM_Sig;
 % Apply CLMS algorithm
 [weight_CLMS,~,~] = funDFT_CLMS(inputSig,desireSig,step,leakage(1));
@@ -72,8 +72,8 @@ H(H>medianH) = medianH;
 %% Plot the time-frequency figure
 surf(1:nSample,freq,H,'LineStyle','none');
 view(2);
-cbar = colorbar;
-cbar.Label.String = 'PSD(dB)';
+% cbar = colorbar;
+% cbar.Label.String = 'PSD(dB)';
 title(sprintf('FM signal spectrogram, AR(%d),\\gamma=%.2f',orderAR,leakage(1)));
 xlabel('Time (Sample)');
 ylabel('Frequency (Hz)');

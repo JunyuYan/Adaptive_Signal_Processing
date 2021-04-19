@@ -50,7 +50,8 @@ for i = 1:length(N)
     set(gca,'xlim',[0.25, 0.40]);
     grid on;grid minor;
     xlabel('Hz');
-    ylabel('Pseudospectrum');
+    ylabel('PSD');
+    set(gca,'fontsize',10);
     title({['PSD with MUSIC method N=',num2str(N(i))]});
     legend([F1,F2],'Realisation','Mean');
 end
@@ -66,6 +67,7 @@ for i = 1:length(N)
     grid on;grid minor; 
     xlabel('Hz');
     ylabel('Std');
+    set(gca,'fontsize',10);
     title({['Standard Derivative with MUSIC method N=',num2str(N(i))]});
 end
 

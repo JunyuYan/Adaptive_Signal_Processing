@@ -5,7 +5,7 @@
 %--------------------------------------------------------------------------
 
 clc;clear;close all
-load('PCAPCR.mat');
+load('../Data/PCAPCR.mat');
 
 %% Initialization
 % The number of iteration

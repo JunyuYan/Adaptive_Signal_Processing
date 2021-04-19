@@ -6,7 +6,7 @@
 %--------------------------------------------------------------------------
 
 clc;clear;close all
-load('time-series.mat');
+load('../Data/time-series.mat');
 %% Initialization
 % The time series data
 Signal = y';

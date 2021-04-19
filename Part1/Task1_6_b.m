@@ -6,7 +6,7 @@
 %--------------------------------------------------------------------------
 
 clc;clear;close all
-load('PCAPCR.mat');
+load('../Data/PCAPCR.mat');
 
 %% Obtain the singular values and rank
 % Obtain the rank of input signal
@@ -29,5 +29,6 @@ stem(error_xNlowrank,'r--o');
 grid on;grid minor;
 xlabel('Subspace dimension index');
 ylabel('Square error');
+set(gca,'fontsize',10);
 title('Error between noiseless inputs with noisy inputs and low rank noisy inputs');
 legend('Noisy inputs','Low rank noisy inputs');

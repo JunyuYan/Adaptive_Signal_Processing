@@ -41,6 +41,7 @@ grid on;grid minor;
 xlim([0.25,0.4]);
 xlabel('Frequency (Hz)');
 ylabel('PSD (dB)');
+set(gca,'fontsize',10);
 title('Periodogram Power Spectral Density Estimate for one exponentials')
 legend(legendstr)
 
@@ -63,6 +64,7 @@ grid on; grid minor;
 xlim([0.25,0.4]);
 xlabel('Frequency (Hz)');
 ylabel('PSD (dB)');
+set(gca,'fontsize',10);
 title('Periodogram Power Spectral Density Estimate for two exponentials');
 legend(legendstr);
 
@@ -85,5 +87,6 @@ grid on;grid minor;
 xlim([0.25,0.4]);
 xlabel('Frequency (Hz)');
 ylabel('PSD (dB)');
+set(gca,'fontsize',10);
 title('Periodogram Power Spectral Density Estimate for three exponentials');
 legend(legendstr);

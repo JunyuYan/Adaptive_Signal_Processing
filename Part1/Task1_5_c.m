@@ -6,9 +6,9 @@
 %--------------------------------------------------------------------------
 
 clc;clear;close all
-load xRRI1.mat;
-load xRRI2.mat;
-load xRRI3.mat;
+load ('../Data/xRRI1.mat');
+load ('../Data/xRRI2.mat');
+load ('../Data/xRRI3.mat');
 
 %% Initialization
 % RRI data
@@ -52,6 +52,7 @@ for iTrial = 1:length(RRI)
     title(['The periodogram of the RRI data: Trial ',num2str(iTrial)]);
     xlabel('Frequency (Hz)');
     ylabel('Magnitude (dB)');
+    set(gca,'fontsize',10);
     legend('Standard','AR Order = 2','AR Order = 6','AR Order=10');
 end  
    

@@ -5,7 +5,7 @@
 %--------------------------------------------------------------------------
 
 clc;clear;close all;
-load sunspot.dat
+load sunspot.dat;
 %% Initialize parameters
 % The normalized signal frequency
 fs = 1;
@@ -37,6 +37,7 @@ grid on;grid minor;
 title('The sunspot time series');
 xlabel('Time (year)');
 ylabel('Number of sunspots');
+set(gca,'fontsize',10);
 legend('Orignal','Mean-detrend','Log-mean')
 %% Plot the power spectrum density
 subplot(2,1,2);
@@ -49,4 +50,5 @@ grid on;grid minor;
 title('The power spectrum density of sunspot series with hamming window');
 xlabel('Normalised frequency (\pi radians/sample)');
 ylabel('Magnitude (dB)');
+set(gca,'fontsize',10);
 legend('Orignal','Mean & detrend','Log & mean')

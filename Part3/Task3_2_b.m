@@ -58,4 +58,5 @@ for iStep= 1:length(step)
     xlabel('Time (Sample)');
     ylabel('Frequency (Hz)');
     ylim([0,600]);
+    set(gca,'fontsize',10);
 end

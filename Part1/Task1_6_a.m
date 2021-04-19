@@ -6,7 +6,7 @@
 %--------------------------------------------------------------------------
 
 clc;clear;close all
-load('PCAPCR.mat');
+load('../Data/PCAPCR.mat');
 
 %% Obtain the singular values and rank
 % Obtain the singular values of X
@@ -21,20 +21,22 @@ error = abs(x_svd-xNoise_svd).^2;
 %% Plot the results
 figure;
 % Plot signular values
-subplot(2,1,1);
+subplot(1,2,1);
 stem(xNoise_svd,'b-*');
 hold on;
 stem(x_svd,'r--o');
 grid on;grid minor;
 xlabel('Subspace dimension index');
 ylabel('Singular values');
+set(gca,'fontsize',10);
 title('The singular values of original input and noisy inputs');
 legend('Noisy input','Original input')
 % Plot the error
-subplot(2,1,2);
+subplot(1,2,2);
 stem(error);
 grid on;grid minor;
 xlabel('Subspace dimension index');
 ylabel('Square error');
+set(gca,'fontsize',10);
 title('The square error between original input and noisy inputs');
 legend('Square error');

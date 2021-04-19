@@ -46,12 +46,14 @@ for iOrder = order
     % Store the power of noise signal
     nPower(:,iOrder-1) = var_est; 
 end
-subplot(2,1,1);
+subplot(1,2,1);
 plot(order,nPower,'linewidth',2);
 xlabel('Normalised frequency (\pi radians/sample)');
 ylabel('Magnitude (dB)');
+set(gca,'fontsize',10);
 title('The Prediction error with different orders');
-subplot(2,1,2);
+grid on; grid minor;
+subplot(1,2,2);
 
 %% Plot the PSD 
 % The ideal model
@@ -66,5 +68,6 @@ plot(w_est,psd_matrix(:,4),'linewidth',2);
 plot(w_est,psd_matrix(:,12),'linewidth',2);
 xlabel('Normalised frequency (\pi radians/sample)');
 ylabel('PSD (dB)');
+set(gca,'fontsize',10);
 title('The Power Spectrum Density with different orders and 9500 samples');
 legend('Ground Truth','Order=2','Order=4','Order=12');

@@ -22,7 +22,7 @@ A_sin = [0.3, 0.6];
 psd_matrix = [];
 
 %% Calculate the psd estimate and plot
-subplot(2,1,1);
+subplot(1,2,1);
 for iRe = 1:nRe
     % The noisy sinusoidal signal
     noisySin = A_sin(1)*sin(2*pi*f_sine(1)*time)+A_sin(2)*sin(2*pi*f_sine(2)*time)+wgn(1,nSample,0);
@@ -38,17 +38,20 @@ end
 psd_mean = mean(psd_matrix);
 F2=plot(f_sin,psd_mean,'b','linewidth',2);
 grid on; grid minor;
+set(gca,'fontsize',10);
+xticks(-0.5:0.1:0.5);
 title('PSD estimate (different realisation and mean)');
 xlabel('Normalized frequency (\pi radians/sample)');
 ylabel('Magnitude');
 legend([F1,F2],'Realization','Mean');
 
 %% The standard deviation
-subplot(2,1,2);
+subplot(1,2,2);
 psd_std = std(psd_matrix);
 plot(f_sin,psd_std,'r','linewidth',2);
 grid on; grid minor;
 title('Standard deviation of the PSD estimate');
 xlabel('Normalized frequency (\pi radians/sample)');
 ylabel('Magnitude');
-
+set(gca,'fontsize',10);
+xticks(-0.5:0.1:0.5);

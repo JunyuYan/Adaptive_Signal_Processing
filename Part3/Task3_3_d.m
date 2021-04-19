@@ -3,7 +3,7 @@
 %--------------------------------------------------------------------------
 
 clc;clear;close all;
-EEG = load('EEG_Data_Assignment1.mat');
+EEG = load('../Data/EEG_Data_Assignment1.mat');
 %% Initialization
 % EEG signal
 EEG_Sig = EEG.POz;

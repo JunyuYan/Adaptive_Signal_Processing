@@ -3,11 +3,11 @@
 %--------------------------------------------------------------------------
 
 clc;clear;close all;
-load('wind-dataset/low-wind.mat');
+load('../Data/wind-dataset/low-wind.mat');
 wind(1,:) = complex(v_east,v_north);
-load('wind-dataset/medium-wind.mat');
+load('../Data/wind-dataset/medium-wind.mat');
 wind(2,:) = complex(v_east,v_north);
-load('wind-dataset/high-wind.mat');
+load('../Data/wind-dataset/high-wind.mat');
 wind(3,:) = complex(v_east,v_north);
 %% Initialization
 % The number of samples
@@ -16,7 +16,7 @@ nSample = length(wind);
 nWind = size(wind,1);
 % CLMS and ACLMS parameters
 % Learning step size
-step = [0.1,0.01,0.001];
+step = [0.1,0.005,0.001];
 % Leakage
 leakage = 0;
 % Delays

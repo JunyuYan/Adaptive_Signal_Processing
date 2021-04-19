@@ -43,26 +43,28 @@ for iOrder = order
     % Store the power of noise signal
     nPower(:,iOrder-1) = var_est; 
 end
-subplot(2,1,1);
+subplot(1,2,1);
 plot(order,nPower,'linewidth',2);
 grid on;grid minor;
 xlabel('Normalised frequency (\pi radians/sample)');
 ylabel('Magnitude (dB)');
+set(gca,'fontsize',10);
 title('The Prediction error with different orders');
-subplot(2,1,2);
+subplot(1,2,2);
 %% Plot the PSD 
 % The legend string
 plot(w,pow2db(abs(H).^2),'linewidth',2);
 hold on;
-for iOrder = 6:8
+for iOrder = 2:4:10
     plot(w_est,psd_matrix(:,iOrder),'linewidth',2);
     hold on;
 end
 grid on;grid minor;
 xlabel('Normalised frequency (\pi radians/sample)');
 ylabel('PSD (dB)');
+set(gca,'fontsize',10);
 title('The Power Spectrum Density with different orders and 950 samples');
-legend('Ground Truth','Order=6','Order=7','Order=8');
+legend('Ground Truth','Order=2','Order=6','Order=10');
 
 
 
