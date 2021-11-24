@@ -1,1 +1,1 @@
-# Adaptive_Signal_Processing Coursework 2020-2021
+# Adaptive Signal Processing and Machine Intelligence Coursework 2020-2021
